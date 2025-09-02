@@ -8,6 +8,33 @@
 <body>
 
     <h1>Gerenciador de Tarefas</h1>
+
+    <form id="form-nova-tarefa">
+        <label for="nome">Nome da tarefa:</label>
+        <input type="text" id="nome" name="nome" required>
+
+        <label for="descricao">Descrição:</label>
+        <textarea id="descricao" name="descricao"></textarea>
+
+        <label for="categoria">Categoria:</label>
+        <select name="categoria" id="categoria">
+            <option value="trabalho">Trabalho</option>
+            <option value="estudos">Estudos</option>
+            <option value="pessoal">Pessoal</option>
+        </select>
+
+        <label for="prioridade">Prioridade:</label>
+        <select name="prioridade" id="prioridade">
+
+            <option value="alta">Alta</option>
+            <option value="media">Média</option>
+            <option value="baixa">Baixa</option>
+
+        </select>
+
+        <button type="submit">Salvar Tarefa</button>
+
+    </form>
     
 </body>
 </html>
