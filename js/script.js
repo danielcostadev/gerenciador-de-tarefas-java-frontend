@@ -21,36 +21,39 @@ form.addEventListener('submit', (event) => {
         status: "pendente"
     };
 
-    enviarDadosParaAPI(novaTarefa);
+    if (window.confirm("Deseja salvar essa tarefa?")) {
 
-    form.reset();
+        enviarDadosParaAPI(novaTarefa);
 
-    async function enviarDadosParaAPI(dadosDaTarefa){
+        form.reset();
+    }
+
+    async function enviarDadosParaAPI(dadosDaTarefa) {
 
         console.log("Enviando dados para API");
-        
+
         try {
 
             const response = await fetch("http://localhost:8080/tarefas", {
 
-            method: "POST",
-            headers: {
-                "Content-type": "application/json",
-            },
+                method: "POST",
+                headers: {
+                    "Content-type": "application/json",
+                },
 
-            body: JSON.stringify(dadosDaTarefa)
-        });
+                body: JSON.stringify(dadosDaTarefa)
+            });
 
 
-        if (!response.ok){
-            throw new Error('Erro ao salvar tarefa. Status: ' + response.status)
-        }
+            if (!response.ok) {
+                throw new Error('Erro ao salvar tarefa. Status: ' + response.status)
+            }
 
-        const tarefaSalva = await response.json();
-        console.log("Tarefa salva com sucesso! Tarefa:", tarefaSalva);
+            const tarefaSalva = await response.json();
+            console.log("Tarefa salva com sucesso! Tarefa:", tarefaSalva);
 
-        
-        // TODO: No futuro, aqui chamaremos uma função para adicionar a 'tarefaSalva' na lista da tela.
+
+            // TODO: No futuro, aqui chamaremos uma função para adicionar a 'tarefaSalva' na lista da tela.
 
 
         } catch (error) {
